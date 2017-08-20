@@ -8,7 +8,6 @@
 /captures
 .externalNativeBuild
 .idea
-gradle
 # Built application files
 *.apk
 *.ap_
