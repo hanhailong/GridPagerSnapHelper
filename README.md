@@ -5,7 +5,7 @@ A powerful tools to impl grid paging layout by RecyclerView
 
 ![](screenshot/recyclerview.gif)
 
-# 下载
+# Download
 
 ## Gradle
 
@@ -28,5 +28,74 @@ dependencies {
 }
 ```
 
-## 使用
+## Usage:
 
+for example:
+
+```
+RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+recyclerView.setHasFixedSize(true);
+
+//setLayoutManager
+GridLayoutManager gridLayoutManager = new GridLayoutManager(this, row, LinearLayoutManager.HORIZONTAL, false);
+recyclerView.setLayoutManager(gridLayoutManager);
+
+//attachToRecyclerView
+GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
+gridPagerSnapHelper.setRow(row).setColumn(column);
+gridPagerSnapHelper.attachToRecyclerView(recyclerView);
+
+int screenWidth = ScreenUtils.getScreenWidth(this);
+int itemWidth = screenWidth / column;
+
+//transform data list
+List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
+dataList = GridPagerUtils.transformAndFillEmptyData(
+        new FirstOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+
+//setAdapter
+RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
+recyclerView.setAdapter(adapter);
+```
+
+**Step 1. setLayoutManager:**
+
+You'd better set a horizontal direction *GridLayoutManager*
+
+**Step 2. RecyclerView attach to GridPagerSnaperHelper**
+
+```
+GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
+gridPagerSnapHelper.setRow(row).setColumn(column);
+gridPagerSnapHelper.attachToRecyclerView(recyclerView);
+```
+Here,you must set row and column
+
+**Step 3. transform data list**
+
+if your src data is *dataList*,you must transform it to dst data
+
+```
+GridPagerUtils.transformAndFillEmptyData(
+        new FirstOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+```
+Here,I have provided three transform order functions
+
+1. FirstOrderTransform
+
+    mapping one row,n column
+2. SecondOrderTransform
+
+    mapping two row,n column 
+3. ThirdOrderTransform
+
+    mapping three row,n column
+
+You can impl your custom order funcitons by extends **AbsDataTransform**
+
+
+# Author
+
+hanhailong worked in 58同城，A fantastic website
+
+hanhailong.cool@163.com
