@@ -11,12 +11,15 @@ import com.hhl.gridpagersanphelper.R;
 import com.hhl.gridpagersanphelper.ScreenUtils;
 import com.hhl.gridpagersnaphelper.GridPagerSnapHelper;
 import com.hhl.gridpagersnaphelper.GridPagerUtils;
+import com.hhl.gridpagersnaphelper.transform.FirstOrderTransform;
+import com.hhl.gridpagersnaphelper.transform.SecondOrderTransform;
+import com.hhl.gridpagersnaphelper.transform.ThirdOrderTransform;
 
 import java.util.List;
 
 public class RecyclerViewActivity extends AppCompatActivity {
 
-    public static final int ROW = 2;
+    public static final int ROW = 1;
     public static final int COLUMN = 5;
 
     @Override
@@ -24,27 +27,86 @@ public class RecyclerViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        recyclerView.setHasFixedSize(true);
+        configFirstRecyclerView(1, 4);
+        configSecondRecyclerView(2, 4);
+        configThridRecyclerView(3, 3);
+    }
+
+    private void configThridRecyclerView(int row, int column) {
+        RecyclerView firstRV = (RecyclerView) findViewById(R.id.recycler_view_third);
+        firstRV.setHasFixedSize(true);
 
         //setLayoutManager
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, ROW, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(gridLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, row, LinearLayoutManager.HORIZONTAL, false);
+        firstRV.setLayoutManager(gridLayoutManager);
 
         //attachToRecyclerView
         GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
-        gridPagerSnapHelper.setRow(ROW).setColumn(COLUMN);
-        gridPagerSnapHelper.attachToRecyclerView(recyclerView);
+        gridPagerSnapHelper.setRow(row).setColumn(column);
+        gridPagerSnapHelper.attachToRecyclerView(firstRV);
 
         int screenWidth = ScreenUtils.getScreenWidth(this);
-        int itemWidth = screenWidth / COLUMN;
+        int itemWidth = screenWidth / column;
 
         //getDataSource
         List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
-        dataList = GridPagerUtils.transformAndFillEmptyData(dataList, ROW, COLUMN);
+        dataList = GridPagerUtils.transformAndFillEmptyData(
+                new ThirdOrderTransform<DataSourceUtils.ItemData>(column), dataList);
 
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
-        recyclerView.setAdapter(adapter);
+        firstRV.setAdapter(adapter);
+    }
+
+    private void configSecondRecyclerView(int row, int column) {
+        RecyclerView firstRV = (RecyclerView) findViewById(R.id.recycler_view_second);
+        firstRV.setHasFixedSize(true);
+
+        //setLayoutManager
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, row, LinearLayoutManager.HORIZONTAL, false);
+        firstRV.setLayoutManager(gridLayoutManager);
+
+        //attachToRecyclerView
+        GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
+        gridPagerSnapHelper.setRow(row).setColumn(column);
+        gridPagerSnapHelper.attachToRecyclerView(firstRV);
+
+        int screenWidth = ScreenUtils.getScreenWidth(this);
+        int itemWidth = screenWidth / column;
+
+        //getDataSource
+        List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
+        dataList = GridPagerUtils.transformAndFillEmptyData(
+                new SecondOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+
+        //setAdapter
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
+        firstRV.setAdapter(adapter);
+    }
+
+    private void configFirstRecyclerView(int row, int column) {
+        RecyclerView firstRV = (RecyclerView) findViewById(R.id.recycler_view_first);
+        firstRV.setHasFixedSize(true);
+
+        //setLayoutManager
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, row, LinearLayoutManager.HORIZONTAL, false);
+        firstRV.setLayoutManager(gridLayoutManager);
+
+        //attachToRecyclerView
+        GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
+        gridPagerSnapHelper.setRow(row).setColumn(column);
+        gridPagerSnapHelper.attachToRecyclerView(firstRV);
+
+        int screenWidth = ScreenUtils.getScreenWidth(this);
+        int itemWidth = screenWidth / column;
+
+        //getDataSource
+        List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
+        dataList = GridPagerUtils.transformAndFillEmptyData(
+                new FirstOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+
+        //setAdapter
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
+        firstRV.setAdapter(adapter);
     }
 }
