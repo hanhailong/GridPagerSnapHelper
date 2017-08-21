@@ -93,6 +93,19 @@ Here,I have provided three transform order functions
 
 You can impl your custom row funcitons by extends **AbsRowDataTransform**
 
+# Why use AbsRowDataTransform?
+
+In general，horizontal direction GridLayoutManager layout like this:
+
+![](screenshot/GridLayoutManager_Horizontal_Normal.png)
+
+But,We want is the following case :
+
+![](screenshot/GridLayoutManager_Horizontal_Tile.png)
+
+so,We need to make a transformation of the data.Here,**AbsRowDataTransform** can meet your needs.
+
+
 # TODO
 
 1. add indicator function
