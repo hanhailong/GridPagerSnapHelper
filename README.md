@@ -24,7 +24,7 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.2'
+    compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.3'
 }
 ```
 
