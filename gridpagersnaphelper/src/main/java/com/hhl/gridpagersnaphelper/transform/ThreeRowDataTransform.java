@@ -4,11 +4,11 @@ package com.hhl.gridpagersnaphelper.transform;
  * Created by hanhailong on 2017/8/20.
  */
 
-public class ThirdOrderTransform<T> extends AbsDataTransform<T> {
+public class ThreeRowDataTransform<T> extends AbsRowDataTransform<T> {
 
     private static final int ROW = 3;
 
-    public ThirdOrderTransform(int column) {
+    public ThreeRowDataTransform(int column) {
         super(ROW, column);
     }
 

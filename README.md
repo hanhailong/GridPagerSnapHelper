@@ -51,7 +51,7 @@ int itemWidth = screenWidth / column;
 //transform data list
 List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
 dataList = GridPagerUtils.transformAndFillEmptyData(
-        new FirstOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+        new OneRowDataTransform<DataSourceUtils.ItemData>(column), dataList);
 
 //setAdapter
 RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
@@ -77,22 +77,25 @@ if your src data is *dataList*,you must transform it to dst data
 
 ```
 GridPagerUtils.transformAndFillEmptyData(
-        new FirstOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+        new OneRowDataTransform<DataSourceUtils.ItemData>(column), dataList);
 ```
 Here,I have provided three transform order functions
 
-1. FirstOrderTransform
+1. OneRowDataTransform
 
     mapping one row,n column
-2. SecondOrderTransform
+2. TwoRowDataTransform
 
     mapping two row,n column 
-3. ThirdOrderTransform
+3. ThreeRowDataTransform
 
     mapping three row,n column
 
-You can impl your custom order funcitons by extends **AbsDataTransform**
+You can impl your custom row funcitons by extends **AbsRowDataTransform**
 
+# TODO
+
+1. add indicator function
 
 # Author
 

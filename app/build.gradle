@@ -35,4 +35,7 @@ dependencies {
 
     compile 'com.github.bumptech.glide:glide:4.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
+
+//    compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.2'
+
 }

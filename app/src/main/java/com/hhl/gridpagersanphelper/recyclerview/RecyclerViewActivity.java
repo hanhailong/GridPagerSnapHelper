@@ -11,9 +11,9 @@ import com.hhl.gridpagersanphelper.R;
 import com.hhl.gridpagersanphelper.ScreenUtils;
 import com.hhl.gridpagersnaphelper.GridPagerSnapHelper;
 import com.hhl.gridpagersnaphelper.GridPagerUtils;
-import com.hhl.gridpagersnaphelper.transform.FirstOrderTransform;
-import com.hhl.gridpagersnaphelper.transform.SecondOrderTransform;
-import com.hhl.gridpagersnaphelper.transform.ThirdOrderTransform;
+import com.hhl.gridpagersnaphelper.transform.OneRowDataTransform;
+import com.hhl.gridpagersnaphelper.transform.TwoRowDataTransform;
+import com.hhl.gridpagersnaphelper.transform.ThreeRowDataTransform;
 
 import java.util.List;
 
@@ -51,7 +51,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         //getDataSource
         List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
         dataList = GridPagerUtils.transformAndFillEmptyData(
-                new ThirdOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+                new ThreeRowDataTransform<DataSourceUtils.ItemData>(column), dataList);
 
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
@@ -77,7 +77,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         //getDataSource
         List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
         dataList = GridPagerUtils.transformAndFillEmptyData(
-                new SecondOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+                new TwoRowDataTransform<DataSourceUtils.ItemData>(column), dataList);
 
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
@@ -103,7 +103,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         //getDataSource
         List<DataSourceUtils.ItemData> dataList = DataSourceUtils.getDataSource();
         dataList = GridPagerUtils.transformAndFillEmptyData(
-                new FirstOrderTransform<DataSourceUtils.ItemData>(column), dataList);
+                new OneRowDataTransform<DataSourceUtils.ItemData>(column), dataList);
 
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);

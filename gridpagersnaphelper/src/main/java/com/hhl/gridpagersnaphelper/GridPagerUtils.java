@@ -1,6 +1,6 @@
 package com.hhl.gridpagersnaphelper;
 
-import com.hhl.gridpagersnaphelper.transform.AbsDataTransform;
+import com.hhl.gridpagersnaphelper.transform.AbsRowDataTransform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +74,7 @@ public class GridPagerUtils {
      * @param <T>
      * @return
      */
-    public static <T> List<T> transformAndFillEmptyData(AbsDataTransform<T> orderTransform, List<T> dataList) {
+    public static <T> List<T> transformAndFillEmptyData(AbsRowDataTransform<T> orderTransform, List<T> dataList) {
         if (orderTransform == null)
             throw new IllegalArgumentException("orderTransform must be not null");
 

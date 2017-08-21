@@ -7,7 +7,7 @@ import java.util.List;
  * Created by hanhailong on 2017/8/20.
  */
 
-public abstract class AbsDataTransform<T> {
+public abstract class AbsRowDataTransform<T> {
 
     private static final int DEFAULT_ROW = 1;
     private static final int DEFAULT_COLUMN = 1;
@@ -15,7 +15,7 @@ public abstract class AbsDataTransform<T> {
     private int mRow = DEFAULT_ROW;
     private int mColumn = DEFAULT_COLUMN;
 
-    public AbsDataTransform(int row, int column) {
+    public AbsRowDataTransform(int row, int column) {
         if (row <= 0 || column <= 0)
             throw new IllegalArgumentException("row or column must be not null");
 
