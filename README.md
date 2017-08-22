@@ -9,7 +9,7 @@ A powerful tools to impl grid paging layout by RecyclerView
 
 # Download
 
-## Gradle
+## JitPack
 
 **Step 1. Add it in your root build.gradle at the end of repositories:**
 
@@ -28,6 +28,12 @@ allprojects {
 dependencies {
     compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.3'
 }
+```
+
+## Jcenter(Recommend)
+
+```
+ compile 'com.hhl:gridpagersnaphelper:0.0.3'
 ```
 
 ## Usage:

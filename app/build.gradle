@@ -38,4 +38,6 @@ dependencies {
 
 //    compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.2'
 
+//    compile 'com.hhl:gridpagersnaphelper:0.0.3'
+
 }
