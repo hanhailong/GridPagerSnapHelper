@@ -36,7 +36,19 @@ dependencies {
  compile 'com.hhl:gridpagersnaphelper:0.0.3'
 ```
 
-## Usage:
+## Maven
+
+```
+<dependency>
+  <groupId>com.hhl</groupId>
+  <artifactId>gridpagersnaphelper</artifactId>
+  <version>0.0.3</version>
+  <type>pom</type>
+</dependency>
+```
+
+
+# Usage:
 
 for example:
 
