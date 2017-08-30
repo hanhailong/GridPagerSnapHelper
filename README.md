@@ -1,4 +1,5 @@
 [ ![Download](https://api.bintray.com/packages/hanhailong/maven/gridpagersnaphelper/images/download.svg) ](https://bintray.com/hanhailong/maven/gridpagersnaphelper/0.0.3)
+[![Build Status](https://travis-ci.org/hanhailong/GridPagerSnapHelper.svg?branch=master)](https://travis-ci.org/hanhailong/GridPagerSnapHelper)
 
 # GridPagerSnapHelper
 A powerful tools to impl grid paging layout by RecyclerView
