@@ -12,15 +12,15 @@ import com.hhl.gridpagersanphelper.ScreenUtils;
 import com.hhl.gridpagersnaphelper.GridPagerSnapHelper;
 import com.hhl.gridpagersnaphelper.GridPagerUtils;
 import com.hhl.gridpagersnaphelper.transform.OneRowDataTransform;
-import com.hhl.gridpagersnaphelper.transform.TwoRowDataTransform;
 import com.hhl.gridpagersnaphelper.transform.ThreeRowDataTransform;
+import com.hhl.gridpagersnaphelper.transform.TwoRowDataTransform;
+import com.hhl.recyclerviewindicator.CirclePageIndicator;
+import com.hhl.recyclerviewindicator.LinePageIndicator;
+import com.hhl.recyclerviewindicator.OnPageChangeListener;
 
 import java.util.List;
 
 public class RecyclerViewActivity extends AppCompatActivity {
-
-    public static final int ROW = 1;
-    public static final int COLUMN = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +33,17 @@ public class RecyclerViewActivity extends AppCompatActivity {
     }
 
     private void configThridRecyclerView(int row, int column) {
-        RecyclerView firstRV = (RecyclerView) findViewById(R.id.recycler_view_third);
-        firstRV.setHasFixedSize(true);
+        RecyclerView thridRV = (RecyclerView) findViewById(R.id.recycler_view_third);
+        thridRV.setHasFixedSize(true);
 
         //setLayoutManager
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, row, LinearLayoutManager.HORIZONTAL, false);
-        firstRV.setLayoutManager(gridLayoutManager);
+        thridRV.setLayoutManager(gridLayoutManager);
 
         //attachToRecyclerView
         GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
         gridPagerSnapHelper.setRow(row).setColumn(column);
-        gridPagerSnapHelper.attachToRecyclerView(firstRV);
+        gridPagerSnapHelper.attachToRecyclerView(thridRV);
 
         int screenWidth = ScreenUtils.getScreenWidth(this);
         int itemWidth = screenWidth / column;
@@ -55,21 +55,39 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
-        firstRV.setAdapter(adapter);
+        thridRV.setAdapter(adapter);
+
+        //indicator
+        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.third_page_indicator);
+        indicator.setRecyclerView(thridRV);
+        //Note: pageColumn must be config
+        indicator.setPageColumn(column);
+
+        indicator.setOnPageChangeListener(new OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void configSecondRecyclerView(int row, int column) {
-        RecyclerView firstRV = (RecyclerView) findViewById(R.id.recycler_view_second);
-        firstRV.setHasFixedSize(true);
+        RecyclerView secondRV = (RecyclerView) findViewById(R.id.recycler_view_second);
+        secondRV.setHasFixedSize(true);
 
         //setLayoutManager
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, row, LinearLayoutManager.HORIZONTAL, false);
-        firstRV.setLayoutManager(gridLayoutManager);
+        secondRV.setLayoutManager(gridLayoutManager);
 
         //attachToRecyclerView
         GridPagerSnapHelper gridPagerSnapHelper = new GridPagerSnapHelper();
         gridPagerSnapHelper.setRow(row).setColumn(column);
-        gridPagerSnapHelper.attachToRecyclerView(firstRV);
+        gridPagerSnapHelper.attachToRecyclerView(secondRV);
 
         int screenWidth = ScreenUtils.getScreenWidth(this);
         int itemWidth = screenWidth / column;
@@ -81,7 +99,25 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
-        firstRV.setAdapter(adapter);
+        secondRV.setAdapter(adapter);
+
+        //indicator
+        LinePageIndicator indicator = (LinePageIndicator) findViewById(R.id.second_page_indicator);
+        indicator.setRecyclerView(secondRV);
+        //Note: pageColumn must be config
+        indicator.setPageColumn(column);
+
+        indicator.setOnPageChangeListener(new OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     private void configFirstRecyclerView(int row, int column) {
@@ -108,5 +144,23 @@ public class RecyclerViewActivity extends AppCompatActivity {
         //setAdapter
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
         firstRV.setAdapter(adapter);
+
+        //indicator
+        CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.first_page_indicator);
+        indicator.setRecyclerView(firstRV);
+        //Note: pageColumn must be config
+        indicator.setPageColumn(column);
+
+        indicator.setOnPageChangeListener(new OnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }

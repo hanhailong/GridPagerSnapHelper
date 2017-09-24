@@ -8,6 +8,10 @@ A powerful tools to impl grid paging layout by RecyclerView
 
 ![](screenshot/recyclerview.gif)
 
+带有Indicator的
+
+![](screenshot/recyclerview_indicator.gif)
+
 # Download
 
 ## JitPack
@@ -77,6 +81,24 @@ dataList = GridPagerUtils.transformAndFillEmptyData(
 //setAdapter
 RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, dataList, itemWidth);
 recyclerView.setAdapter(adapter);
+
+//indicator
+CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.first_page_indicator);
+indicator.setRecyclerView(firstRV);
+//Note: pageColumn must be config
+indicator.setPageColumn(column);
+
+indicator.setOnPageChangeListener(new OnPageChangeListener() {
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+});
 ```
 
 **Step 1. setLayoutManager:**

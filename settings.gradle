@@ -1,1 +1,1 @@
-include ':app', ':gridpagersnaphelper'
+include ':app', ':gridpagersnaphelper', ':recyclerviewindicator'
