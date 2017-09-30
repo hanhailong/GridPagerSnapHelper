@@ -37,7 +37,7 @@ publish {
     userOrg = 'hanhailong'
     groupId = 'com.hhl'
     artifactId = 'gridpagersnaphelper'
-    publishVersion = '0.0.3'
+    publishVersion = '1.0.0'
     desc = 'A powerful tools to impl grid paging layout by RecyclerView'
     website = 'https://github.com/hanhailong/GridPagerSnapHelper'
 }

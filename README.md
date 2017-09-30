@@ -31,14 +31,17 @@ allprojects {
 
 ```
 dependencies {
-    compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.3'
+    compile 'com.github.hanhailong:GridPagerSnapHelper:1.0.0'
 }
 ```
 
 ## Jcenter(Recommend)
 
 ```
- compile 'com.hhl:gridpagersnaphelper:0.0.3'
+ compile 'com.hhl:gridpagersnaphelper:1.0.0'
+
+ // Optional , config indicator
+ compile 'com.hhl:recyclerviewindicator:1.0.0'
 ```
 
 ## Maven
@@ -47,7 +50,16 @@ dependencies {
 <dependency>
   <groupId>com.hhl</groupId>
   <artifactId>gridpagersnaphelper</artifactId>
-  <version>0.0.3</version>
+  <version>1.0.0</version>
+  <type>pom</type>
+</dependency>
+
+// Optional , config indicator
+
+<dependency>
+  <groupId>com.hhl</groupId>
+  <artifactId>recyclerviewindicator</artifactId>
+  <version>1.0.0</version>
   <type>pom</type>
 </dependency>
 ```
@@ -136,6 +148,27 @@ Here,I have provided three transform order functions
 
 You can impl your custom row funcitons by extends **AbsRowDataTransform**
 
+**Step4. (Optional) Config Indicator**
+```
+CirclePageIndicator indicator = (CirclePageIndicator) findViewById(R.id.first_page_indicator);
+indicator.setRecyclerView(firstRV);
+//Note: pageColumn must be config
+indicator.setPageColumn(column);
+
+indicator.setOnPageChangeListener(new OnPageChangeListener() {
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+});
+```
+
+
 # Why use AbsRowDataTransform?
 
 In general，horizontal direction GridLayoutManager layout like this:
@@ -148,10 +181,6 @@ But,We want is the following case :
 
 so,We need to make a transformation of the data.Here,**AbsRowDataTransform** can meet your needs.
 
-
-# TODO
-
-1. add indicator function
 
 # Author
 

@@ -30,14 +30,16 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
 
-    compile project(':gridpagersnaphelper')
+//    compile project(':gridpagersnaphelper')
 
     compile 'com.github.bumptech.glide:glide:4.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0'
 
 //    compile 'com.github.hanhailong:GridPagerSnapHelper:0.0.2'
 
-//    compile 'com.hhl:gridpagersnaphelper:0.0.3'
+    compile 'com.hhl:gridpagersnaphelper:1.0.0'
 
     compile project(':recyclerviewindicator')
+
+//    compile 'com.hhl:recyclerviewindicator:1.0.0'
 }
