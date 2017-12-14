@@ -2,11 +2,15 @@
 [![Build Status](https://travis-ci.org/hanhailong/GridPagerSnapHelper.svg?branch=master)](https://travis-ci.org/hanhailong/GridPagerSnapHelper)
 
 # GridPagerSnapHelper
-A powerful tools to impl grid paging layout by RecyclerView
+A powerful tools to impl grid paging layout by RecyclerView,support horizontal and vertical page
 
 # 效果图
 
 ![](screenshot/recyclerview.gif)
+
+# vertical orientation
+
+![](screenshot/vertical_rv.gif)
 
 带有Indicator的
 
