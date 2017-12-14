@@ -66,20 +66,35 @@ public class GridPagerSnapHelper extends SnapHelper {
 
     private int distanceToCenter(@NonNull RecyclerView.LayoutManager layoutManager,
                                  @NonNull View targetView, OrientationHelper helper) {
-        int screenWidth = targetView.getContext().getResources().getDisplayMetrics().widthPixels;
+        if (layoutManager.canScrollHorizontally()) {
+            int totalWidth = mRecyclerView.getWidth();
 
-        int columnWidth = screenWidth / mColumn;
+            int columnWidth = totalWidth / mColumn;
 
-        int position = layoutManager.getPosition(targetView);
-        int pageIndex = pageIndex(position);
+            int position = layoutManager.getPosition(targetView);
+            int pageIndex = pageIndex(position);
 
-        int currentPageStart = pageIndex * countOfpage();
+            int currentPageStart = pageIndex * countOfpage();
 
-        int distance = ((position - currentPageStart) / mRow) * columnWidth;
+            int distance = ((position - currentPageStart) / mRow) * columnWidth;
 
-        final int childStart = helper.getDecoratedStart(targetView);
+            final int childStart = helper.getDecoratedStart(targetView);
+            return childStart - distance;
+        } else {//数值方向
+            int totalHeight = mRecyclerView.getHeight();
 
-        return childStart - distance;
+            int rowHeight = totalHeight / mRow;
+
+            int position = layoutManager.getPosition(targetView);
+            int pageIndex = pageIndex(position);
+
+            int currentPageStart = pageIndex * countOfpage();
+
+            int distance = ((position - currentPageStart) / mColumn) * rowHeight;
+
+            final int childStart = helper.getDecoratedStart(targetView);
+            return childStart - distance;
+        }
     }
 
 

@@ -28,6 +28,7 @@
             android:name=".recyclerview.RecyclerViewActivity"
             android:label="RecyclerView"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".vertical.VerticalRVActivity"></activity>
     </application>
 
 </manifest>

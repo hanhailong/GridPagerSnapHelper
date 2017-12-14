@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hhl.gridpagersanphelper.recyclerview.RecyclerViewActivity;
+import com.hhl.gridpagersanphelper.vertical.VerticalRVActivity;
 import com.hhl.gridpagersanphelper.viewpager.ViewPagerActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,5 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void jumpToViewPager(View view) {
         startActivity(new Intent(this, ViewPagerActivity.class));
+    }
+
+    public void jumpToVerticalRecyclerView(View view) {
+        startActivity(new Intent(this, VerticalRVActivity.class));
     }
 }
